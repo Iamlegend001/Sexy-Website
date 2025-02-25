@@ -52,12 +52,14 @@ body {
 }
 
 video {
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   -o-object-fit: cover;
      object-fit: cover;
   position: fixed;
   z-index: -1;
+  top: 0;
+  left: 0;
 }
 
 #main {
@@ -93,7 +95,6 @@ video {
 #main #page1 h2 {
   font-size: 1.5rem;
   font-weight: 500;
-  margin-top: 1rem;
   margin-top: 2rem;
 }
 #main #page1 p {
@@ -102,42 +103,39 @@ video {
   width: 40%;
 }
 #main #page2 {
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   z-index: 10;
 }
-#main #page2 #scroller {
+#main #scroller {
   overflow-x: auto;
   overflow: hidden;
   white-space: nowrap;
   position: relative;
   z-index: 10;
 }
-#main #page2 #scroller ::-webkit-scrollbar {
+#main #scroller::-webkit-scrollbar {
   display: none;
 }
-#main #page2 #scroller #scroller-in-1 {
+#main #scroller-in-1 {
   display: inline-block;
   white-space: nowrap;
-  animation-name: scroll;
-  animation-duration: 15s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
+  animation: scroll 15s linear infinite;
 }
-#main #page2 #scroller #scroller-in-1 h4 {
+#main #scroller-in-1 h4 {
   display: inline-block;
   font-size: 10rem;
   font-weight: 900;
   font-family: gilroy;
   margin-right: 1rem;
-  transition: all liner 0.1s;
+  transition: all linear 0.1s;
   -webkit-text-stroke: 2px rgb(121, 243, 110);
   color: transparent;
 }
-#main #page2 #scroller #scroller-in-1 h4:hover {
+#main #scroller-in-1 h4:hover {
   color: rgb(121, 243, 110);
 }
-#main #page2 #about-us {
+#main #about-us {
   height: 40vh;
   width: 100%;
   display: flex;
@@ -146,28 +144,95 @@ video {
   padding: 0 3rem;
   position: relative;
 }
-#main #page2 #about-us img {
+#main #about-us img {
   height: 20rem;
   width: 20rem;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 1.7rem;
 }
-#main #page2 #about-us #about-us-in {
+#main #about-us #about-us-in {
   width: 50%;
   text-align: center;
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
-#main #page2 #about-us #about-us-in h3 {
+#main #about-us #about-us-in h3 {
   font-size: 2rem;
   font-weight: 800;
 }
-#main #page2 #about-us #about-us-in p {
+#main #about-us #about-us-in p {
   font-size: 1rem;
   font-weight: 500;
   line-height: 1.5rem;
+}
+#main .card-containers {
+  margin: 2rem 0;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  z-index: 10;
+}
+#main .card-containers .cards {
+  height: 80%;
+  width: 24%;
+  border-radius: 2rem;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+#main .card-containers .cards .overlay {
+  height: 100%;
+  width: 100%;
+  background-color: red;
+  padding: 5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease; /* Smooth transition */
+}
+#main .card-containers .cards .overlay h1 {
+  color: #000;
+  font-size: 2rem;
+  font-weight: 700;
+  white-space: nowrap;
+  margin-bottom: 2.4rem;
+}
+#main .card-containers .cards .overlay p {
+  color: #000;
+}
+#main .card-containers:hover .overlay {
+  opacity: 1; /* Show overlay on card hover */
+}
+#main #green-div {
+  height: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  background: linear-gradient(to right bottom, red, green);
+}
+#main #green-div h4 {
+  width: 50%;
+  font-size: 2rem;
+  text-transform: uppercase;
+  line-height: 3.5rem;
+}
+#main #green-div img {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 6rem;
+}
+#main #card1 {
+  background-image: url("https://c1.wallpaperflare.com/preview/775/283/597/the-ball-stadion-football-the-pitch.jpg");
+}
+#main #card2 {
+  background-image: url("https://images8.alphacoders.com/706/thumb-1920-706540.jpg");
+}
+#main #card3 {
+  background-image: url("https://wallpapercat.com/w/full/a/8/c/101161-3840x2160-desktop-4k-cristiano-ronaldo-wallpaper-photo.jpg");
 }
 
 @keyframes scroll {

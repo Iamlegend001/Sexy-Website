@@ -11,6 +11,7 @@ body {
   height: 100%;
   width: 100%;
 }
+
 #cursor {
   height: 1.5rem;
   width: 1.5rem;
@@ -19,6 +20,7 @@ body {
   position: fixed;
   z-index: 99;
 }
+
 #cursor-blr {
   height: 30rem;
   width: 30rem;
@@ -44,6 +46,7 @@ body {
   img {
     height: 5rem;
   }
+
   h4 {
     text-transform: uppercase;
     font-weight: 500;
@@ -51,11 +54,13 @@ body {
 }
 
 video {
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
   object-fit: cover;
   position: fixed;
   z-index: -1;
+  top: 0;
+  left: 0;
 }
 
 #main {
@@ -72,106 +77,186 @@ video {
     text-align: center;
     gap: 1rem;
     z-index: 10;
-
+  
     h1 {
       font-size: 6rem;
       font-weight: 900;
       position: relative;
+      &::before {
+        content: "SLEEP. GRIND. SLEEP";
+        position: absolute;
+        color: #000;
+        top: -6px;
+        left: -6px;
+        -webkit-text-stroke: 2px #95c11e;
+        z-index: -1;
+      }
     }
-    h1::before {
-      content: "SLEEP. GRIND. SLEEP";
-      position: absolute;
-      color: #000;
-      top: -6px;
-      left: -6px;
-
-      -webkit-text-stroke: 2px #95c11e;
-      z-index: -1;
-    }
+  
     h2 {
       font-size: 1.5rem;
       font-weight: 500;
-      margin-top: 1rem;
       margin-top: 2rem;
     }
+  
     p {
       font-size: 1rem;
       font-weight: 200;
       width: 40%;
     }
   }
+  
   #page2 {
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     z-index: 10;
-
-    #scroller {
-      overflow-x: auto;
-      overflow: hidden;
-      white-space: nowrap;
-      position: relative;
-      z-index: 10;
-      ::-webkit-scrollbar {
-        display: none;
-      }
-      #scroller-in-1 {
-        display: inline-block;
-        white-space: nowrap;
-        animation-name: scroll;
-        animation-duration: 15s;
-        animation-timing-function: linear;
-        animation-iteration-count: infinite;
-        h4 {
-          display: inline-block;
-          font-size: 10rem;
-          font-weight: 900;
-          font-family: gilroy;
-          margin-right: 1rem;
-          transition: all liner 0.1s;
-          -webkit-text-stroke: 2px rgb(121, 243, 110);
-          color: transparent;
-
-          &:hover {
-            color: rgb(121, 243, 110);
-          }
-        }
-      }
+  }
+  
+  #scroller {
+    overflow-x: auto;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    z-index: 10;
+  
+    &::-webkit-scrollbar {
+      display: none;
     }
-    #about-us {
-      height: 40vh;
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      padding: 0 3rem;
-      position: relative;
-
-      img {
-        height: 20rem;
-        width: 20rem;
-        object-fit: cover;
-        border-radius: 1.7rem;
-      }
-
-      #about-us-in {
-        width: 50%;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        h3 {
-          font-size: 2rem;
-          font-weight: 800;
-        }
-        p{
-          font-size: 1rem;
-          font-weight: 500;
-          line-height: 1.5rem ;
-        }
+  }
+  
+  #scroller-in-1 {
+    display: inline-block;
+    white-space: nowrap;
+    animation: scroll 15s linear infinite;
+  
+    h4 {
+      display: inline-block;
+      font-size: 10rem;
+      font-weight: 900;
+      font-family: gilroy;
+      margin-right: 1rem;
+      transition: all linear 0.1s;
+      -webkit-text-stroke: 2px rgb(121, 243, 110);
+      color: transparent;
+      &:hover {
+        color: rgb(121, 243, 110);
       }
     }
   }
+  
+  #about-us {
+    height: 40vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 3rem;
+    position: relative;
+  
+    img {
+      height: 20rem;
+      width: 20rem;
+      object-fit: cover;
+      border-radius: 1.7rem;
+    }
+  
+    #about-us-in {
+      width: 50%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+  
+      h3 {
+        font-size: 2rem;
+        font-weight: 800;
+      }
+  
+      p {
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.5rem;
+      }
+    }
+  }
+  
+  .card-containers {
+    margin: 2rem 0;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    z-index: 10;
+  
+    .cards {
+      height: 80%;
+      width: 24%;
+      border-radius: 2rem;
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+  
+      .overlay {
+        height: 100%;
+        width: 100%;
+        background-color: red;
+        padding: 5rem;
+        opacity: 0;
+        transition: opacity 0.3s ease; /* Smooth transition */
+        h1 {
+          color: #000;
+          font-size: 2rem;
+          font-weight: 700;
+          white-space: nowrap;
+          margin-bottom: 2.4rem;
+        }
+        p {
+          color: #000;
+        }
+      }
+  
+      
+    }
+    &:hover .overlay {
+      opacity: 1; /* Show overlay on card hover */
+    }
+  }
+  #green-div{
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    background:linear-gradient(to right bottom, red,green);
+    h4{
+      width: 50%;
+      font-size: 2rem;
+      text-transform: uppercase;
+      line-height: 3.5rem;
+
+    }
+    img{
+      height: 100%;
+      object-fit: cover;
+      width: 6rem;
+    }
+  }
+  
+  #card1 {
+    background-image: url("https://c1.wallpaperflare.com/preview/775/283/597/the-ball-stadion-football-the-pitch.jpg");
+  }
+  
+  #card2 {
+    background-image: url("https://images8.alphacoders.com/706/thumb-1920-706540.jpg");
+  }
+  
+  #card3 {
+    background-image: url("https://wallpapercat.com/w/full/a/8/c/101161-3840x2160-desktop-4k-cristiano-ronaldo-wallpaper-photo.jpg");
+  }
+  
 }
+
 
 @keyframes scroll {
   from {
